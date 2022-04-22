@@ -1,0 +1,7 @@
+telebot --> pip install pyTelegramBotAPI;
+requests --> pip install requests;
+subprocess --> pip install subprocess32;
+speech_recognition --> pip install speech-recognition-python;
+gtts --> gTTS;
+os;
+

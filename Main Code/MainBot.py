@@ -63,7 +63,7 @@ def help(message):
                                                   '_Translation from any language into any other language is enabled by default_', parse_mode="Markdown")
 #---------------------------Selection. 1st page----------------------------------------------
 @bot.message_handler(commands=['choose'])
-def choose_lang(message):
+def choose_lang(message, nn, mm):
     global flatten #declaring a variable with language keys (list)
     global flatten1 #declaring a variable with language names (list)
     global jjj #declare the variable amount of languages as ​​global (can be used everywhere in our code)
@@ -79,8 +79,8 @@ def choose_lang(message):
     flatten = [str(sub) for sub in b] #iterate through the list of keys and convert them to a string (each element)
     flatten1 = [str(sub) for sub in bb] #the same, but of valuse (value is the name of language like Englisch)
     jjj = len(flatten) #I count the amount of languages
-    i = 0 #this and the next are the indexes that we will operate on during the loop
-    ii = 1
+    i = nn #this and the next are the indexes that we will operate on during the loop
+    ii = mm
     for ix in range(int(jjj/2)): #divide the number by two, converting to a number
 
       #in list 'butto' I place inlines. 
@@ -113,109 +113,10 @@ def choose_lang(message):
     markup = telebot.types.InlineKeyboardMarkup(button_demo) 
     #The bot sends a message, where our markup already comes out, that is, a full-fledged menu for selecting a language
     bot.send_message(message.chat.id, text='Выберите язык:', reply_markup=markup)
-#---------------------------Selection. 2nd page----------------------------------------------
-#Everything here is identical to the previous and following such functions, I only change
-#the indexing of the beginning of the sorting by the list, according to our page capacity    
-@bot.message_handler(commands=['choose2'])
-def choose_lang2(message):
-    i = 16
-    ii = 17
-    button_demo = []
-    for ix in range(int(jjj/2)):
-        butto = [
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[i]}".capitalize(), callback_data=f'{flatten[i]}'),
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[ii]}".capitalize(), callback_data=f'{flatten[ii]}')
-            ]
-        i += 2
-        ii += 2
-        button_demo.append(butto)
-        if len(button_demo) == 8:
-            b = [telebot.types.InlineKeyboardButton(text=f"1", callback_data=f'1'),
-                 telebot.types.InlineKeyboardButton(text=f"2", callback_data=f'2'),
-                 telebot.types.InlineKeyboardButton(text=f"3", callback_data=f'3'),
-                 telebot.types.InlineKeyboardButton(text=f"4", callback_data=f'4'),
-                 telebot.types.InlineKeyboardButton(text=f"5", callback_data=f'5'),
-                 telebot.types.InlineKeyboardButton(text=f"6", callback_data=f'6')]
-            button_demo.append(b)
-            break
-    markup = telebot.types.InlineKeyboardMarkup(button_demo)
-    bot.send_message(message.chat.id, text='Choose the language:', reply_markup=markup)
-#---------------------------Selection. 3 page----------------------------------------------
-def choose_lang3(message):
-    i = 32
-    ii = 33
-    button_demo = []
-    for ix in range(int(jjj/2)):
-        butto = [
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[i]}".capitalize(), callback_data=f'{flatten[i]}'),
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[ii]}".capitalize(), callback_data=f'{flatten[ii]}')
-            ]
-        i += 2
-        ii += 2
-        button_demo.append(butto)
-        if len(button_demo) == 8:
-            b = [telebot.types.InlineKeyboardButton(text=f"1", callback_data=f'1'),
-                 telebot.types.InlineKeyboardButton(text=f"2", callback_data=f'2'),
-                 telebot.types.InlineKeyboardButton(text=f"3", callback_data=f'3'),
-                 telebot.types.InlineKeyboardButton(text=f"4", callback_data=f'4'),
-                 telebot.types.InlineKeyboardButton(text=f"5", callback_data=f'5'),
-                 telebot.types.InlineKeyboardButton(text=f"6", callback_data=f'6')]
-            button_demo.append(b)
-            break
-    markup = telebot.types.InlineKeyboardMarkup(button_demo)
-    bot.send_message(message.chat.id, text='Choose the language:', reply_markup=markup)
-#---------------------------Selection. 4 page----------------------------------------------
-def choose_lang4(message):
-    i = 48
-    ii = 49
-    button_demo = []
-    for ix in range(int(jjj/2)):
-        butto = [
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[i]}".capitalize(), callback_data=f'{flatten[i]}'),
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[ii]}".capitalize(), callback_data=f'{flatten[ii]}')
-            ]
-        i += 2
-        ii += 2
-        button_demo.append(butto)
-        if len(button_demo) == 8:
-            b = [telebot.types.InlineKeyboardButton(text=f"1", callback_data=f'1'),
-                 telebot.types.InlineKeyboardButton(text=f"2", callback_data=f'2'),
-                 telebot.types.InlineKeyboardButton(text=f"3", callback_data=f'3'),
-                 telebot.types.InlineKeyboardButton(text=f"4", callback_data=f'4'),
-                 telebot.types.InlineKeyboardButton(text=f"5", callback_data=f'5'),
-                 telebot.types.InlineKeyboardButton(text=f"6", callback_data=f'6')]
-            button_demo.append(b)
-            break
-    markup = telebot.types.InlineKeyboardMarkup(button_demo)
-    bot.send_message(message.chat.id, text='Choose the language:', reply_markup=markup)
-#---------------------------Selection. 5 page----------------------------------------------
-def choose_lang5(message):
-    i = 64
-    ii = 65
-    button_demo = []
-    for ix in range(int(jjj/2)):
-        butto = [
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[i]}".capitalize(), callback_data=f'{flatten[i]}'),
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[ii]}".capitalize(), callback_data=f'{flatten[ii]}')
-            ]
-        i += 2
-        ii += 2
-        button_demo.append(butto)
-        if len(button_demo) == 8:
-            b = [telebot.types.InlineKeyboardButton(text=f"1", callback_data=f'1'),
-                 telebot.types.InlineKeyboardButton(text=f"2", callback_data=f'2'),
-                 telebot.types.InlineKeyboardButton(text=f"3", callback_data=f'3'),
-                 telebot.types.InlineKeyboardButton(text=f"4", callback_data=f'4'),
-                 telebot.types.InlineKeyboardButton(text=f"5", callback_data=f'5'),
-                 telebot.types.InlineKeyboardButton(text=f"6", callback_data=f'6')]
-            button_demo.append(b)
-            break
-    markup = telebot.types.InlineKeyboardMarkup(button_demo)
-    bot.send_message(message.chat.id, text='Choose the language:', reply_markup=markup)
 #---------------------------Selection. 6 page----------------------------------------------
-def choose_lang6(message):
-    i = 80
-    ii = 81
+def choose_lang6(message, nn, mm):
+    i = nn
+    ii = mm
     button_demo = []
     for ix in range(int(jjj/2)):
         butto = [
@@ -246,35 +147,35 @@ def query_handler(call):
     #then we put this value in the qq variable and delete the last message from the bot,
     #the choice of language and do a redirect (flipping) to the function with which we have changed the numbering
     #in simple terms - if you click on 1, the program will process it and transfer you to the choose_lang2(call.message) function
-    if call.data == '1':
+        if call.data == '1':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang(call.message)
+        choose_lang(call.message, 0, 1)
         return
     elif call.data == '2':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang2(call.message)
+        choose_lang(call.message, 16, 17)
         return
     elif call.data == '3':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang3(call.message)
+        choose_lang(call.message, 32, 33)
         return
     elif call.data == '4':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang4(call.message)
+        choose_lang(call.message, 48, 49)
         return
     elif call.data == '5':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang5(call.message)
+        choose_lang(call.message, 64, 65)
         return
     elif call.data == '6':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang6(call.message)
+        choose_lang6(call.message, 80, 81)
         return
     #if you clicked not on the buttons 1, 2, 3.., but on the language, then the bot also deletes its last message
     #and passes the language key stored in callback_data for processing
@@ -392,7 +293,7 @@ def any_message(message):
         list_lan(message)
         return
     elif text == 'Select language':
-        choose_lang(message)
+        choose_lang(message, 0, 1)
         return
     elif text == 'Help':
         help(message)

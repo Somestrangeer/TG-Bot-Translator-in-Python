@@ -2,7 +2,7 @@ import telebot
 from list_langs import LANGUAGES
 
 
-def choose_lang(message):
+def choose_lang(message, nn, mm):
     global flatten #declaring a variable with language keys (list)
     global flatten1 #declaring a variable with language names (list)
     global jjj #declare the variable amount of languages as ​​global (can be used everywhere in our code)
@@ -18,8 +18,8 @@ def choose_lang(message):
     flatten = [str(sub) for sub in b] #iterate through the list of keys and convert them to a string (each element)
     flatten1 = [str(sub) for sub in bb]#the same, but of valuse (value is the name of language like Englisch)
     jjj = len(flatten) #I count the amount of languages
-    i = 0 #this and the next are the indexes that we will operate on during the loop
-    ii = 1
+    i = nn #this and the next are the indexes that we will operate on during the loop
+    ii = mm
     for ix in range(int(jjj/2)): #divide the number by two, converting to a number
     	#in list 'butto' I place inlines. 
     	#text=f"{flatten1[i]}".capitalize() - I take the values by indexes

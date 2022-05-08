@@ -57,7 +57,7 @@ def help(message):
                                                   '_По умолчанию включён перевод с любого языка на английский_', parse_mode="Markdown")
 #---------------------------Выбор языка-Фундамент-Первая страница----------------------------------------------
 @bot.message_handler(commands=['choose']) #объявляю команду выбора, самое важное здесь
-def choose_lang(message):
+def choose_lang(message, nn, mm):
     global flatten #бъявляю переменную с ключами языков
     global flatten1 #бъявляю переменную с названиями языков
     global jjj #объявляю переменную кол-ва языков глобальной(можно использовать всюду в нашем коде)
@@ -73,8 +73,8 @@ def choose_lang(message):
     flatten = [str(sub) for sub in b] #прохожусь по списку из ключей и преобразую их в строку(каждый элемент)
     flatten1 = [str(sub) for sub in bb]#то же самое, но со значениями (значение - просто название языка)
     jjj = len(flatten) #делаю подсчёт кол-ва языков
-    i = 0 #это и next - индексы, которыми мы будеи оперировать при цикле
-    ii = 1
+    i = nn #это и next - индексы, которыми мы будеи оперировать при цикле
+    ii = mm
     for ix in range(int(jjj/2)): #делю кол-во на два, преобразуя в число
     	#в список butto помещаю инлайн кнопки. 
     	#text=f"{flatten1[i]}".capitalize() - беру значения(название языка) по индексу
@@ -103,109 +103,10 @@ def choose_lang(message):
     markup = telebot.types.InlineKeyboardMarkup(button_demo) 
     #бот присылает сообщение, где выходит уже наш маркап, то есть полноценное меню по выбору языка
     bot.send_message(message.chat.id, text='Выберите язык:', reply_markup=markup)
-#-------------------------------Вторая страница--------------------------------------------------------
-#Тут всё идентично предыдщему и следующим таким функциям, меняю толкьо 
-#индексацию начала переборки по списку, согласно вместимости нашей страницы
-@bot.message_handler(commands=['choose2'])
-def choose_lang2(message):
-    i = 16
-    ii = 17
-    button_demo = []
-    for ix in range(int(jjj/2)):
-        butto = [
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[i]}".capitalize(), callback_data=f'{flatten[i]}'),
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[ii]}".capitalize(), callback_data=f'{flatten[ii]}')
-            ]
-        i += 2
-        ii += 2
-        button_demo.append(butto)
-        if len(button_demo) == 8:
-            b = [telebot.types.InlineKeyboardButton(text=f"1", callback_data=f'1'),
-                 telebot.types.InlineKeyboardButton(text=f"2", callback_data=f'2'),
-                 telebot.types.InlineKeyboardButton(text=f"3", callback_data=f'3'),
-                 telebot.types.InlineKeyboardButton(text=f"4", callback_data=f'4'),
-                 telebot.types.InlineKeyboardButton(text=f"5", callback_data=f'5'),
-                 telebot.types.InlineKeyboardButton(text=f"6", callback_data=f'6')]
-            button_demo.append(b)
-            break
-    markup = telebot.types.InlineKeyboardMarkup(button_demo)
-    bot.send_message(message.chat.id, text='Выберите язык:', reply_markup=markup)
-#-------------------------------Третья страница--------------------------------------------------------
-def choose_lang3(message):
-    i = 32
-    ii = 33
-    button_demo = []
-    for ix in range(int(jjj/2)):
-        butto = [
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[i]}".capitalize(), callback_data=f'{flatten[i]}'),
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[ii]}".capitalize(), callback_data=f'{flatten[ii]}')
-            ]
-        i += 2
-        ii += 2
-        button_demo.append(butto)
-        if len(button_demo) == 8:
-            b = [telebot.types.InlineKeyboardButton(text=f"1", callback_data=f'1'),
-                 telebot.types.InlineKeyboardButton(text=f"2", callback_data=f'2'),
-                 telebot.types.InlineKeyboardButton(text=f"3", callback_data=f'3'),
-                 telebot.types.InlineKeyboardButton(text=f"4", callback_data=f'4'),
-                 telebot.types.InlineKeyboardButton(text=f"5", callback_data=f'5'),
-                 telebot.types.InlineKeyboardButton(text=f"6", callback_data=f'6')]
-            button_demo.append(b)
-            break
-    markup = telebot.types.InlineKeyboardMarkup(button_demo)
-    bot.send_message(message.chat.id, text='Выберите язык:', reply_markup=markup)
-#-------------------------------Четвертая страница--------------------------------------------------------
-def choose_lang4(message):
-    i = 48
-    ii = 49
-    button_demo = []
-    for ix in range(int(jjj/2)):
-        butto = [
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[i]}".capitalize(), callback_data=f'{flatten[i]}'),
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[ii]}".capitalize(), callback_data=f'{flatten[ii]}')
-            ]
-        i += 2
-        ii += 2
-        button_demo.append(butto)
-        if len(button_demo) == 8:
-            b = [telebot.types.InlineKeyboardButton(text=f"1", callback_data=f'1'),
-                 telebot.types.InlineKeyboardButton(text=f"2", callback_data=f'2'),
-                 telebot.types.InlineKeyboardButton(text=f"3", callback_data=f'3'),
-                 telebot.types.InlineKeyboardButton(text=f"4", callback_data=f'4'),
-                 telebot.types.InlineKeyboardButton(text=f"5", callback_data=f'5'),
-                 telebot.types.InlineKeyboardButton(text=f"6", callback_data=f'6')]
-            button_demo.append(b)
-            break
-    markup = telebot.types.InlineKeyboardMarkup(button_demo)
-    bot.send_message(message.chat.id, text='Выберите язык:', reply_markup=markup)
-# -------------------------------Пятая страница--------------------------------------------------------
-def choose_lang5(message):
-    i = 64
-    ii = 65
-    button_demo = []
-    for ix in range(int(jjj/2)):
-        butto = [
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[i]}".capitalize(), callback_data=f'{flatten[i]}'),
-        telebot.types.InlineKeyboardButton(text=f"{flatten1[ii]}".capitalize(), callback_data=f'{flatten[ii]}')
-            ]
-        i += 2
-        ii += 2
-        button_demo.append(butto)
-        if len(button_demo) == 8:
-            b = [telebot.types.InlineKeyboardButton(text=f"1", callback_data=f'1'),
-                 telebot.types.InlineKeyboardButton(text=f"2", callback_data=f'2'),
-                 telebot.types.InlineKeyboardButton(text=f"3", callback_data=f'3'),
-                 telebot.types.InlineKeyboardButton(text=f"4", callback_data=f'4'),
-                 telebot.types.InlineKeyboardButton(text=f"5", callback_data=f'5'),
-                 telebot.types.InlineKeyboardButton(text=f"6", callback_data=f'6')]
-            button_demo.append(b)
-            break
-    markup = telebot.types.InlineKeyboardMarkup(button_demo)
-    bot.send_message(message.chat.id, text='Выберите язык:', reply_markup=markup)
 #-------------------------------Шестая страница--------------------------------------------------------
-def choose_lang6(message):
-    i = 80
-    ii = 81
+def choose_lang6(message, nn, mm):
+    i = nn
+    ii = mm
     button_demo = []
     for ix in range(int(jjj/2)):
         butto = [
@@ -240,32 +141,32 @@ def query_handler(call):
     if call.data == '1':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang(call.message)
+        choose_lang(call.message, 0, 1)
         return
     elif call.data == '2':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang2(call.message)
+        choose_lang(call.message, 16, 17)
         return
     elif call.data == '3':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang3(call.message)
+        choose_lang(call.message, 32, 33)
         return
     elif call.data == '4':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang4(call.message)
+        choose_lang(call.message, 48, 49)
         return
     elif call.data == '5':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang5(call.message)
+        choose_lang(call.message, 64, 65)
         return
     elif call.data == '6':
         qq = call.data
         bot.delete_message(call.message.chat.id, call.message.message_id)
-        choose_lang6(call.message)
+        choose_lang6(call.message, 80, 81)
         return
     #если ты нажал не на кнопки 1, 2, 3.., а на язык, то бот так же удаляет последнее своё сообщение
     #и и передаёт на обработку ключ языка, хранящийся в callback_data
@@ -375,7 +276,7 @@ def any_message(message): #сюда попадают все сообщения
         list_lan(message)
         return
     elif text == 'Выбор языка':
-        choose_lang(message)
+        choose_lang(message, 0, 1)
         return
     elif text == 'Помощь':
         help(message)
